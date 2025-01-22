@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import React, { useState, useRef } from "react";
@@ -19,7 +18,7 @@ const Component = () => {
           numberOfCamerasCallback={setNumberOfCameras}
         />
       </div>
-      <img src={image} alt="Image preview" />
+      <img src={image} alt="logo preview"/>
       <button
         onClick={() => {
           const photo = camera.current.takePhoto();
