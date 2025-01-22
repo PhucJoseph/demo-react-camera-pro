@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 import React, { useState, useRef } from "react";
-import {Camera} from "react-camera-pro";
+import { Camera } from "react-camera-pro";
 
 const Component = () => {
   const camera = useRef(null);
@@ -11,40 +11,38 @@ const Component = () => {
 
   return (
     <>
-    <Camera ref={camera} numberOfCamerasCallback={setNumberOfCameras} />
-      <img src={image} alt='Image preview' />
+      <div style={{ width: "300px", height: "300px" }}>
+        {" "}
+        <Camera
+          ref={camera}
+          aspectRatio={4 / 3}
+          numberOfCamerasCallback={setNumberOfCameras}
+        />
+      </div>
+      <img src={image} alt="Image preview" />
       <button
         onClick={() => {
-            const photo = camera.current.takePhoto();
-            setImage(photo);
+          const photo = camera.current.takePhoto();
+          setImage(photo);
         }}
-      >Shoot</button>
+      >
+        Shoot
+      </button>
       <button
         hidden={numberOfCameras <= 1}
         onClick={() => {
           camera.current.switchCamera();
         }}
-      >Change</button>
+      >
+        Change
+      </button>
     </>
-  )
-}
+  );
+};
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Component />
     </div>
   );
 }
